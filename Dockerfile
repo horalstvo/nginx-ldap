@@ -25,11 +25,13 @@ RUN mkdir /var/log/nginx \
 	&& mkdir /etc/nginx \
 	&& cd ~ \
 	&& git clone https://github.com/kvspb/nginx-auth-ldap.git \
+	&& git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git \
 	&& git clone https://github.com/nginx/nginx.git \
 	&& cd ~/nginx \
 	&& git checkout tags/${NGINX_VERSION} \
 	&& ./auto/configure \
         --add-module=/root/nginx-auth-ldap \
+        --add-module=/root/nginx-sticky-module-ng \
         --with-debug \
         --prefix=/etc/nginx \
         --sbin-path=/usr/sbin/nginx \
@@ -80,6 +82,7 @@ RUN mkdir /var/log/nginx \
 	&& make install \
 	&& cd .. \
 	&& rm -rf nginx-auth-ldap \
+	&& rm -rf nginx-sticky-module-ng \
 	&& rm -rf nginx \
 	&& wget -O /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz \
 	&& tar -C /usr/local/bin -xzvf /tmp/dockerize.tar.gz \
