@@ -94,6 +94,10 @@ RUN groupadd nginx \
     && useradd -ms /bin/sh -g nginx nginx \
     && mkdir /var/cache/nginx \
     && mkdir /var/cache/nginx/client_temp \
+    && mkdir /var/cache/nginx/proxy_temp \
+    && mkdir /var/cache/nginx/fastcgi_temp \
+    && mkdir /var/cache/nginx/uwsgi_temp \
+    && mkdir /var/cache/nginx/scgi_temp \
     && chmod -R 766 /var/log/nginx /var/cache/nginx \
     && chmod 644 /etc/nginx/*
 
