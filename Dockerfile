@@ -98,7 +98,7 @@ RUN groupadd nginx \
     && mkdir /var/cache/nginx/fastcgi_temp \
     && mkdir /var/cache/nginx/uwsgi_temp \
     && mkdir /var/cache/nginx/scgi_temp \
-    && chmod -R 766 /var/log/nginx /var/cache/nginx \
+    && chmod -R 777 /var/log/nginx /var/cache/nginx \
     && chmod 644 /etc/nginx/*
 
 CMD ["dockerize","-stdout","/var/log/nginx/access.log","-stderr","/var/log/nginx/error.log","/usr/sbin/nginx","-g","daemon off;"]
